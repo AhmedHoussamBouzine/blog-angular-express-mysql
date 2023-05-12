@@ -1,32 +1,32 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET  all users */
+/* GET  all articles */
 router.get('/', function (req, res, next) {
     const { take, skip } = req.query;
     res.send('respond with a resource');
 });
 
-/* GET a user by id */
+/* GET an article by id */
 
 router.get('/:id', (req, res, next) => {
     const id = req.params.id;
     res.send(id);
 });
 
-/* POST a user */
+/* POST an article */
 router.post('/', (req, res, next) => {
-    const user = req.body;
-    res.send(user);
+    const article = req.body;
+    res.send(article);
 });
 
-/* UPDATE a user */
+/* UPDATE an article */
 router.patch('/', (req, res, next) => {
-    const user = req.body;
-    res.send(user);
+    const article = req.body;
+    res.send(article);
 });
 
-/* DELETE a user */
+/* DELETE an article */
 router.delete('/:id', (req, res, next) => {
     const id = req.params.id;
     res.send(id);

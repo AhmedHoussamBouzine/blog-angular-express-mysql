@@ -1,0 +1,32 @@
+###
+# GET All commentaire
+###
+GET http://localhost:3000/users?take=4&skip=2
+
+###
+# GET a user by id 
+###
+GET http://localhost:3000/users/1
+
+###
+# POST a user
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+}
+
+###
+# UPDATE a user
+###
+PATCH http://localhost:3000/users
+Content-Type: application/json
+
+{
+}
+
+###
+# DELETE a user
+###
+DELETE http://localhost:3000/users/1
