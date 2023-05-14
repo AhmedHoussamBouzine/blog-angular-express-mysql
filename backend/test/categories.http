@@ -6,7 +6,7 @@ GET http://localhost:3000/categories?take=4&skip=2
 ###
 # GET an categorie by id 
 ###
-GET http://localhost:3000/categories/1
+GET http://localhost:3000/categories/2
 
 ###
 # POST an categorie
@@ -15,6 +15,8 @@ POST http://localhost:3000/categories
 Content-Type: application/json
 
 {
+  "nom": "fsdjf",
+  "articleIds": [2]
 }
 
 ###
@@ -24,9 +26,11 @@ PATCH http://localhost:3000/categories
 Content-Type: application/json
 
 {
+    "id":4,
+  "nom": "fs33djf"
 }
 
 ###
 # DELETE an categorie
 ###
-DELETE http://localhost:3000/categories/1
+DELETE http://localhost:3000/categories/4

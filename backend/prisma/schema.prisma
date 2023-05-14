@@ -27,8 +27,8 @@ model Article {
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
   published   Boolean
-  auteur      Utilisateur   @relation(fields: [auteurId], references: [id])
-  auteurId    Int
+  utilisateur      Utilisateur   @relation(fields: [utilisateurId], references: [id])
+  utilisateurId    Int
   categories  Categorie[]
   commentaires Commentaire[]
 }

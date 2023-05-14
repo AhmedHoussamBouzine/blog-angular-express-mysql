@@ -1,7 +1,7 @@
 ###
 # GET All commentaire
 ###
-GET http://localhost:3000/users?take=4&skip=2
+GET http://localhost:3000/users?take=1&skip=0
 
 ###
 # GET a user by id 
@@ -15,6 +15,10 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
+    "nom": "anas1",
+    "email": "ana33@gmail.com",
+    "password": "123333",
+    "role": "AUTHOR"
 }
 
 ###
@@ -24,9 +28,14 @@ PATCH http://localhost:3000/users
 Content-Type: application/json
 
 {
+    "id":2,
+    "nom": "anas1",
+    "email": "anas8@gmail.com",
+    "password": "123333",
+    "role": "AUTHOR"
 }
 
 ###
 # DELETE a user
 ###
-DELETE http://localhost:3000/users/1
+DELETE http://localhost:3000/users/6
