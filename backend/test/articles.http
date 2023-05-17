@@ -1,18 +1,18 @@
 ###
 # GET All articles
 ###
-GET http://localhost:3000/articles?take=4&skip=2
-
+GET http://localhost:3000/api/articles?take=4&skip=2
 ###
 # GET an article by id 
 ###
-GET http://localhost:3000/articles/2
+GET http://localhost:3000/api/articles/2
 
 ###
 # POST an article
 ###
-POST http://localhost:3000/articles
+POST http://localhost:3000/api/articles
 Content-Type: application/json
+authorization :  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMiwiZW1haWwiOiJhbmEzNTQzQGdtYWlsLmNvbSIsImlhdCI6MTY4NDMzNDAwNX0.GqvVVbqC7ADg1h1t2SahN2NqspwgInjeoihMysSkky4
 
 {
   "titre": "Example Article",
@@ -27,7 +27,7 @@ Content-Type: application/json
 ###
 # UPDATE an article
 ###
-PATCH http://localhost:3000/articles
+PATCH http://localhost:3000/api/articles
 Content-Type: application/json
 
 {
@@ -41,4 +41,4 @@ Content-Type: application/json
 ###
 # DELETE an article
 ###
-DELETE http://localhost:3000/articles/4
+DELETE http://localhost:3000/api/articles/4

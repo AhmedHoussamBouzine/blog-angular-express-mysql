@@ -16,11 +16,21 @@ Content-Type: application/json
 
 {
     "nom": "anas1",
-    "email": "ana33@gmail.com",
+    "email": "ana3543@gmail.com",
     "password": "123333",
     "role": "AUTHOR"
 }
 
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    
+    "email": "ana3543@gmail.com",
+    "password": "123333"
+   
+}
 ###
 # UPDATE a user
 ###

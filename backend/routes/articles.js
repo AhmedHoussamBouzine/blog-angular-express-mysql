@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 const { PrismaClient } = require('@prisma/client');
-
+const authMiddleware = require("../middleware/authMiddleware"); 
 const prisma = new PrismaClient();
 
 /* GET  all articles */
-router.get('/', async function (req, res, next) {
+router.get('/',authMiddleware, async function (req, res, next) {
     const { take, skip } = req.query;
     try {
         const articles = await prisma.Article.findMany({
@@ -18,12 +18,13 @@ router.get('/', async function (req, res, next) {
     } finally {
       // Cleanup and close connection
       await prisma.$disconnect();
+
     }
 });
 
 /* GET an article by id */
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', authMiddleware ,async (req, res, next) => {
     const id = req.params.id;
     try {
         const article = await prisma.Article.findUnique({
@@ -47,7 +48,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 /* POST an article */
-router.post('/', async (req, res, next) => {
+router.post('/', authMiddleware ,async (req, res, next) => {
     const { titre, contenu, image, published, utilisateurId, categorieIds } = req.body;
 
     try {
@@ -64,12 +65,11 @@ router.post('/', async (req, res, next) => {
             },
             include: { categories: true, commentaires: true },
         });
-
-        res.status(200).send(newArticle);
+     
+        res.status(200).send({ status: true, message: 'Article Added Successfully', article: newArticle });
     } catch (error) {
         res.status(500).json({ error: error });
     } finally {
-      // Cleanup and close connection
       await prisma.$disconnect();
     }
 });

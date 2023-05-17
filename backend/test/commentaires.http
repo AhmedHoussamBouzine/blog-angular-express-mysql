@@ -1,18 +1,18 @@
 ###
 # GET All commentaire
 ###
-GET http://localhost:3000/commentaires?take=4&skip=2
+GET http://localhost:3000/api/commentaires?take=4&skip=2
 
 ###
 # GET an commentaire by id 
 ###
-GET http://localhost:3000/commentaires/2
+GET http://localhost:3000/api/commentaires/2
 
 
 ###
 # POST an commentaire
 ###
-POST http://localhost:3000/commentaires
+POST http://localhost:3000/api/commentaires
 Content-Type: application/json
 
 {
@@ -24,7 +24,7 @@ Content-Type: application/json
 ###
 # UPDATE an commentaire
 ###
-PATCH http://localhost:3000/commentaires
+PATCH http://localhost:3000/api/commentaires
 Content-Type: application/json
 
 {   "id": 3,
@@ -35,4 +35,4 @@ Content-Type: application/json
 ###
 # DELETE an commentaire
 ###
-DELETE http://localhost:3000/commentaires/3
+DELETE http://localhost:3000/api/commentaires/3
