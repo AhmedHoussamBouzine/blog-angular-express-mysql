@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+             
               "src/styles.css"
             ],
             "scripts": []
@@ -103,4 +104,5 @@
     }
   },
   "defaultProject": "frontend"
+  
 }

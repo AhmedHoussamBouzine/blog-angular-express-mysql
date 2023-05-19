@@ -1,0 +1,16 @@
+.tbody{
+    width: 80vw;
+  }
+  tr{
+    display: flex;
+    flex-direction: row;
+    width: inherit;
+  }
+  td{
+    flex: 1;
+  }
+  
+  a{
+    cursor: pointer;
+  }
+  

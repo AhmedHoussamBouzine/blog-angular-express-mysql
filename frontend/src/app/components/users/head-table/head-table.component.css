@@ -1,0 +1,12 @@
+.thead{
+    width: 80vw;
+  }
+  tr{
+    display: flex;
+    flex-direction: row;
+    width: inherit;
+  }
+  th{
+    flex: 1;
+  }
+  
