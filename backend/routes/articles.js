@@ -125,7 +125,7 @@ router.delete('/:id', async (req, res) => {
         },
       });
       
-  
+
       await prisma.Article.delete({
         where: {
           id: parseInt(id),
@@ -135,7 +135,6 @@ router.delete('/:id', async (req, res) => {
     } catch (error) {
       res.status(500).send({ error: error });
     } finally {
-      // Cleanup and close connection
       await prisma.$disconnect();
     }
   });
