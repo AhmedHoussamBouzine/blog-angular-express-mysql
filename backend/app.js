@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/', authRouter);
-app.use('/api/users', usersRouter);
+app.use('/api/utilisateurs', usersRouter);
 app.use('/api/articles', articlesRouter);
 app.use('/api/commentaires', commentairesRouter);
 app.use('/api/categories', categoriesRouter);
