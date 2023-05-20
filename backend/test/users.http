@@ -1,7 +1,7 @@
 ###
 # GET All commentaire
 ###
-GET http://localhost:3000/users?take=1&skip=0
+GET http://localhost:3000/api/users?take=1&skip=0
 
 ###
 # GET a user by id 
@@ -48,4 +48,4 @@ Content-Type: application/json
 ###
 # DELETE a user
 ###
-DELETE http://localhost:3000/users/6
+DELETE http://localhost:3000/api/users/4

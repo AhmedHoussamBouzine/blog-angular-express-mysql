@@ -26,7 +26,7 @@ router.post("/signup", async (req, res) => {
         nom,
         email,
         password: await bcrypt.hash(password, 10),
-        role:"AUTHOR"
+        role: "AUTHOR"
       },
     });
 
@@ -36,7 +36,14 @@ router.post("/signup", async (req, res) => {
       { expiresIn: "2h" }
     );
 
-    return res.status(201).json({status : true, user: newUser, token : token});
+    return res.status(201).json({
+      status: true, user: {
+        id: newUser.id,
+        nom: newUser.nom,
+        email: newUser.email,
+        role: newUser.role,
+      }, token: token
+    });
   } catch (err) {
     console.error(err);
     return res.status(500).json(err);
@@ -45,7 +52,7 @@ router.post("/signup", async (req, res) => {
 router.post("/signin", async (req, res) => {
   try {
     const { email, password } = req.body;
-    
+
     if (!(email && password)) {
       return res.status(400).json({ message: "All input is required" });
     }
@@ -53,13 +60,20 @@ router.post("/signin", async (req, res) => {
     const user = await prisma.Utilisateur.findUnique({
       where: { email },
     });
-    
+
     if (user && (await bcrypt.compare(password, user.password))) {
-        const token = jwt.sign(
+      const token = jwt.sign(
         { user_id: user.id, email },
         process.env.TOKEN_KEY
       );
-      return res.status(200).json({status : true, user : user, token : token });
+      return res.status(200).json({
+        status: true, user: {
+          id: user.id,
+          nom: user.nom,
+          email: user.email,
+          role: user.role,
+        }, token: token
+      });
     }
 
     return res.status(400).json({ message: "User not found" });

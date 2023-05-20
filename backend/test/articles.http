@@ -41,4 +41,4 @@ Content-Type: application/json
 ###
 # DELETE an article
 ###
-DELETE http://localhost:3000/api/articles/4
+DELETE http://localhost:3000/api/articles/1
