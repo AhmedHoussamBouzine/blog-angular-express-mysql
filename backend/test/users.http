@@ -1,7 +1,7 @@
 ###
 # GET All commentaire
 ###
-GET http://localhost:3000/api/users?take=1&skip=0
+GET http://localhost:3000/api/utilisateurs?take=1&skip=0
 
 ###
 # GET a user by id 
@@ -11,7 +11,7 @@ GET http://localhost:3000/api/users/1
 ###
 # POST a user
 ###
-POST http://localhost:3000/
+POST http://localhost:3000/signup
 Content-Type: application/json
 
 {

@@ -8,11 +8,7 @@ const prisma = new PrismaClient();
 router.get('/', async (req, res, next) => {
     const { take, skip } = req.query;
     try {
-        const categories = await prisma.Categorie.findMany(
-            {
-                include: { articles: true}
-            }
-        );
+        const categories = await prisma.Categorie.findMany();
         res.status(200).send(categories);
     } catch (error) {
         res.status(500).send({ error: error });

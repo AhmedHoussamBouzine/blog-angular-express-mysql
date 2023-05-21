@@ -5,11 +5,11 @@ const authMiddleware = require("../middleware/authMiddleware");
 const prisma = new PrismaClient();
 
 /* GET  all articles */
-router.get('/', authMiddleware, async function (req, res, next) {
+router.get('/', async function (req, res, next) {
   const { take, skip } = req.query;
   try {
     const articles = await prisma.Article.findMany({
-      include: { categories: true, commentaires: true }
+      include: { categories: true, utilisateur: true },
     });
     // res.send(articles.splice(take,skip));
     res.status(200).send(articles);
@@ -24,14 +24,14 @@ router.get('/', authMiddleware, async function (req, res, next) {
 
 /* GET an article by id */
 
-router.get('/:id', authMiddleware, async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   const id = req.params.id;
   try {
     const article = await prisma.Article.findUnique({
       where: {
         id: parseInt(id),
       },
-      include: { categories: true, commentaires: true }
+      include: { categories: true, commentaires: true ,utilisateur: true }
     });
     if (article) {
       res.status(200).send(article);
@@ -48,7 +48,7 @@ router.get('/:id', authMiddleware, async (req, res, next) => {
 });
 
 /* POST an article */
-router.post('/', authMiddleware, async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   const { titre, contenu, image, published, utilisateurId, categorieIds } = req.body;
 
   try {
