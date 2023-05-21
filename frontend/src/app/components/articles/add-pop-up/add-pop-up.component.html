@@ -28,6 +28,16 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             placeholder="https://image.com" required>
                     </div>
+                    <div>
+                        <label class="block my-5 text-sm font-medium text-gray-900 dark:text-white" for="categorieID">
+                            Categories </label>
+                        <select multiple
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                            (change)="ChangeCategorie($event)">
+                            <option *ngFor="let categorie of categories" [value]="categorie.id">
+                                {{categorie.nom}}</option>
+                        </select>
+                    </div>
                 </form>
                 <span class="block my-5 text-sm font-medium text-gray-900 dark:text-white">Content</span>
                 <angular-editor [(ngModel)]="htmlContent" [config]="configEditor"></angular-editor>

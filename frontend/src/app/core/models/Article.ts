@@ -1,10 +1,12 @@
 export interface Article {
     id?: number;
-    title: string;
+    titre: string;
     image: string;
     contenu: Text;
     createdAt?: Date;
     updatedAt?: Date;
     published: Boolean;
-    utilisateurId: number;
+    utilisateur?: any;
+    categories?: any;
+    commentaires?: any;
 }

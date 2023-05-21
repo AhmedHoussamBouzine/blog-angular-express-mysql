@@ -4,6 +4,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddPopUpComponent } from './add-pop-up/add-pop-up.component';
 import { AddCategoriePopUpComponent } from './add-categorie-pop-up/add-categorie-pop-up.component';
 import { DeleteCategoriePopUpComponent } from './delete-categorie-pop-up/delete-categorie-pop-up.component';
+import { UtilisateurService } from 'src/app/core/services/utilisateur.service';
+import { CategorieService } from 'src/app/core/services/categorie.service';
+import { Categorie } from 'src/app/core/models/Categorie';
+import { Utilisateur } from 'src/app/core/models/Utilisateur';
 
 @Component({
   selector: 'app-users',
@@ -11,17 +15,21 @@ import { DeleteCategoriePopUpComponent } from './delete-categorie-pop-up/delete-
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-
-  constructor(public dialog: MatDialog) { }
+  public categories : Categorie[] = [] ;
+  public utilisateurs : Utilisateur[] = [] ;
+  searchText:any;
+  constructor(public dialog: MatDialog, private utilisateurService: UtilisateurService, private categorieService: CategorieService) { }
 
   ngOnInit(): void {
+    this.getAllCategories();
+    this.getAllUtilisateurs();
   }
-  categories = [
-    { name: 'cat 1', color: 'primary' },
-    { name: 'cat 2', color: 'accent' },
-    { name: 'cat 3', color: 'warn' },
-  ];
-
+  getAllCategories() {
+    this.categorieService.getAll().subscribe(data => { this.categories = data;})
+  }
+  getAllUtilisateurs() {
+    this.utilisateurService.getAll().subscribe(data => { this.utilisateurs = data;console.log(this.utilisateurs)})
+  }
   removeChip(categorie: any) {
     const index = this.categories.indexOf(categorie);
     if (index > -1) {

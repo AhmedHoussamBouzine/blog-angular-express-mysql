@@ -5,5 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
   role:string = "ADMIN";
+  articleId?: number;
+  article:any;
   constructor() { }
 }

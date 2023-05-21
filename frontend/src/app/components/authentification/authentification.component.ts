@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/core/services/auth-service.service';
 
 @Component({
   selector: 'app-authentification',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./authentification.component.css']
 })
 export class AuthentificationComponent implements OnInit {
-
-  constructor() { }
+  email!: string;
+  password!: string;
+  constructor(private authService: AuthServiceService,private router:Router) { }
 
   ngOnInit(): void {
   }
+  onLogin() {
+    this.authService.signIn({ email: this.email, password: this.password }).subscribe(data => {
+      this.authService.saveToken(data.token, data.user);
+      this.router.navigateByUrl('/');
+    })
+  }
+
 
 }

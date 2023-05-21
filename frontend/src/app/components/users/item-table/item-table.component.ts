@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateUserPopUpComponent } from '../update-user-pop-up/update-user-pop-up.component';
 import { DeleteUserPopUpComponent } from '../delete-user-pop-up/delete-user-pop-up.component';
@@ -9,6 +9,8 @@ import { DeleteUserPopUpComponent } from '../delete-user-pop-up/delete-user-pop-
   styleUrls: ['./item-table.component.css']
 })
 export class ItemTableComponent implements OnInit {
+  @Input() utilisateur:any;
+  @Input() id:any;
 
   constructor(public dialog: MatDialog) { }
 

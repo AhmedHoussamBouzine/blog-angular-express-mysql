@@ -22,7 +22,7 @@
                     <mat-chip-list class="flex flex-wrap gap-2">
                         <mat-chip (click)="onDialogDeleteCategorie()" class="bg-beige w-[150px] flex justify-between" *ngFor="let categorie of categories"
                             (removed)="onDialogDeleteCategorie()">
-                            <span> {{categorie.name}} </span>
+                            <span> {{categorie.nom}} </span>
                             <button class="top-3" matChipRemove>
                                 <mat-icon>cancel</mat-icon>
                             </button>
@@ -50,19 +50,15 @@
         <div class="container">
             <div class="bg-white p-4 shadow-lg rounded-lg">
                 <div class="mt-4">
-                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg bg-white">
-                        <table class="table">
+                    <div class=" overflow-hidden border-b border-gray-200 sm:rounded-lg bg-white">
+                        <div class="my-4 flex">
+                           <input type="text" placeholder="Search..." [(ngModel)]="searchText"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  name="search">
+                           <button class="text-white bg-orange hover:bg-orange focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5">Search</button> 
+                        </div>
+                        <table class="shadow table">
                             <app-head-table></app-head-table>
                             <div class="container-tbaod">
-                                <app-item-table></app-item-table>
-                                <app-item-table></app-item-table>
-                                <app-item-table></app-item-table>
-                                <app-item-table></app-item-table>
-                                <app-item-table></app-item-table>
-                                <app-item-table></app-item-table>
-                                <app-item-table></app-item-table>
-                                <app-item-table></app-item-table>
-
+                                <app-item-table *ngFor="let utilisateur of utilisateurs | filter:searchText ; let i = index"  [id]="i" [utilisateur]="utilisateur"></app-item-table>
                             </div>
                         </table>
                     </div>

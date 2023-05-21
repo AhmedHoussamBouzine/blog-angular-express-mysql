@@ -1,57 +1,28 @@
 <div class="flex justify-between max-w-screen-xl mx-auto">
     <div class="w-[60%]">
         <h1 class="max-w-2xl mx-8 mt-16 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">
-            Title article</h1>
-        <h2 class="font-light mx-10 mb-10 "> 10/22/2020</h2>
-        <div class="mb-5 font-light text-xl text-gray-500 text-justify">Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Architecto accusantium dicta
-            alias ducimus aliquid ipsum exercitationem obcaecati quas illum provident. Molestiae maxime perspiciatis
-            corrupti nam, Consectetur dolorem voluptates quidem dolore. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Architecto accusantium dicta alias ducimus aliquid ipsum exercitationem obcaecati quas
-            illum provident. Molestiae maxime perspiciatis corrupti nam, Consectetur dolorem voluptates quidem dolore.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium dicta alias ducimus aliquid
-            ipsum exercitationem obcaecati quas illum provident. Molestiae maxime perspiciatis corrupti nam, Consectetur
-            dolorem voluptates quidem dolore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
-            accusantium dicta alias ducimus aliquid ipsum exercitationem obcaecati quas illum provident. Molestiae
-            maxime perspiciatis corrupti nam, Consectetur dolorem voluptates quidem dolore?</div>
+            {{article.titre}}</h1>
+        <h2 class="font-light my-4 mx-10 mb-10 ">{{article.createdAt | date :'short'}}</h2>
+        <div class="mb-5 font-light text-xl text-gray-500 text-justify">{{article.contenu}}</div>
 
     </div>
     <div class="w-[40%]">
         <img class="relative mx-auto my-8 p-4 w-[450px] bg-beige rounded-lg backdrop-filter backdrop-blur-lg shadow-sm"
-            src="../../../../assets/illustration.png" alt="image">
+            [src]="article.image" alt="image">
         <section class="flexflex-col mx-11 justify-evenly mt-16 relative">
             <div class="flex m-2 flex-row justify-between items-center mr-12">
                 <h1 class="capitalize text-gray-800 font-bold tracking-wide">Comments :</h1> <span
                     class="capitalize text-gray-800 font-bold tracking-wide">(3 Comments)</span>
             </div>
-            <div class="">
-                <div class="m-2 bg-beige rounded-md p-2 shadow-sm">
+            <div class="overflow-y-auto max-h-[40vh]">
+                <div *ngFor="let comment of article.commentaires" class="m-2 bg-beige rounded-md p-2  shadow-sm">
                     <div class="flex flex-row justify-between relative pb-2"><span
-                            class="capitalize text-gray-800 font-bold tracking-wide">hamza el ghazouani</span><span
+                            class="capitalize text-gray-800 font-bold tracking-wide">{{comment.email}}</span><span
                             class="text-2xl absolute top-0 right-0 text-gray-500">"</span></div>
-                    <div class="text-base text-gray-700 py-1 max-w-[350px]">Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. amet
-                        consectetur adipisicing elit.</div>
+                    <div class="text-base text-gray-700 py-1 max-w-[350px]">{{comment.contenu}}</div>
 
                 </div>
-                <div class="m-2 bg-beige rounded-md p-2 shadow-sm">
-                    <div class="flex flex-row justify-between relative pb-2"><span
-                            class="capitalize text-gray-800 font-bold tracking-wide">hamza el ghazouani</span><span
-                            class="text-2xl absolute top-0 right-0 text-gray-500">"</span></div>
-                    <div class="text-base text-gray-700 py-1 max-w-[350px]">Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. amet
-                        consectetur adipisicing elit.</div>
-
-                </div>
-                <div class="m-2 bg-beige rounded-md p-2 shadow-sm">
-                    <div class="flex flex-row justify-between relative pb-2"><span
-                            class="capitalize text-gray-800 font-bold tracking-wide">hamza el ghazouani</span><span
-                            class="text-2xl absolute top-0 right-0 text-gray-500">"</span></div>
-                    <div class="text-base text-gray-700 py-1 max-w-[350px]">Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. amet
-                        consectetur adipisicing elit.</div>
-
-                </div>
+                
             </div>
             <div>
                 <div class="m-2 bg-beige rounded-md p-2 shadow-sm">

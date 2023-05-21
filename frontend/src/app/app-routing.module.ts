@@ -7,13 +7,14 @@ import { UsersComponent } from './components/users/users.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { ExploreComponent } from './components/explore/explore.component';
 import { DetailsComponent } from './components/articles/details/details.component';
+import { AuthGuard } from './core/guard/auth.guard';
 
 const routes: Routes = [
     {path:'',component:HomeComponent},
-    {path:'explore',component:ExploreComponent},
-    {path:'articles',component:ArticlesComponent},
-    {path:'articles/:id',component:DetailsComponent},
-    {path:'manage',component:UsersComponent},
+    {path:'explore',component:ExploreComponent,canActivate: [AuthGuard]},
+    {path:'articles',component:ArticlesComponent,canActivate: [AuthGuard]},
+    {path:'articles/:id',component:DetailsComponent,canActivate: [AuthGuard]},
+    {path:'manage',component:UsersComponent,canActivate: [AuthGuard]},
     {path:'login',component:AuthentificationComponent},
     {path:'**',component:NotfoundComponent,pathMatch:"prefix"}
   ];
