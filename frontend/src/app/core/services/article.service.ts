@@ -28,7 +28,7 @@ export class articleService {
   }
 
   getAll() {
-    this.http.get<Article[]>(`${BASE_URL}/articles?take=1&skip=0`).subscribe(data => {
+    this.http.get<Article[]>(`${BASE_URL}/articles?take=20&skip=0`).subscribe(data => {
       this.subject.next(data);
     })
     return this.subject.asObservable();

@@ -26,7 +26,7 @@ export class UtilisateurService {
 
 
   getAll() {
-    this.http.get<Utilisateur[]>(`${BASE_URL}/utilisateurs?take=1&skip=0`).subscribe(data =>
+    this.http.get<Utilisateur[]>(`${BASE_URL}/utilisateurs?take=20&skip=0`).subscribe(data =>
       {
         this.subject.next(data);
       })

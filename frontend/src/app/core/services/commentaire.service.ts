@@ -26,7 +26,7 @@ export class CommentaireService {
   }
 
   getAll() {
-    this.http.get<Commentaire[]>(`${BASE_URL}/commentaires`).subscribe(data =>
+    this.http.get<Commentaire[]>(`${BASE_URL}/commentaires?take=20&skip=0`).subscribe(data =>
       {
         this.subject.next(data);
       })

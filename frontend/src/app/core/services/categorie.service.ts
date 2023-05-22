@@ -25,7 +25,7 @@ export class CategorieService {
   }
 
   getAll() {
-    this.http.get<Categorie[]>(`${BASE_URL}/categories`).subscribe(data =>
+    this.http.get<Categorie[]>(`${BASE_URL}/categories?take=20&skip=0`).subscribe(data =>
       {
         this.subject.next(data);
       })
