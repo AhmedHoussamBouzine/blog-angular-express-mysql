@@ -27,7 +27,7 @@ import { AddCategoriePopUpComponent } from './components/users/add-categorie-pop
 import { UpdateUserPopUpComponent } from './components/users/update-user-pop-up/update-user-pop-up.component';
 import { DeleteUserPopUpComponent } from './components/users/delete-user-pop-up/delete-user-pop-up.component';
 import { DeleteCategoriePopUpComponent } from './components/users/delete-categorie-pop-up/delete-categorie-pop-up.component';
-import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 import { MyarticlesComponent } from './components/articles/myarticles/myarticles.component';
 import { UpdatePopUpComponent } from './components/articles/update-pop-up/update-pop-up.component';
 import { DeletePopUpComponent } from './components/articles/delete-pop-up/delete-pop-up.component';

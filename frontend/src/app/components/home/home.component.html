@@ -30,7 +30,7 @@
     </h1>
     <div class="grid grid-cols-4 gap-4 overflow-y-auto max-h-[60vh]">
       <div  [routerLink]="'/articles/'+article.id" *ngFor="let article of articles"
-        class="w-full max-w-sm  border border-gray-200 rounded-lg shadow  item-container">
+        class="w-full max-w-sm  border border-gray-200 rounded-lg shadow hover:bg-primary-100  item-container">
         <a>
           <img class="p-8 rounded-t-lg img" [src]="article.image" alt="image" />
         </a>
@@ -76,8 +76,8 @@
         <div class="grid grid-cols-3 gap-4">
           <div  class="w-full max-w-sm bg-white border h-[50vh] border-gray-200 rounded-lg shadow item-container">
             <h1 class="text-2xl font-bold tracking-tight text-black py-5 border-b-2 mx-8 ">{{categories[0].nom}}</h1>
-            <div class="overflow-y-auto max-h-[40vh] rounded-lg">
-              <div [routerLink]="'/articles/'+article.id" *ngFor="let article of categories[0].articles" class="flex bg-beige h-[10vh] m-2 rounded-lg hover:bg-primary-100 ">
+            <div class="overflow-y-auto max-h-[40vh] rounded-lg ">
+              <div [routerLink]="'/articles/'+article.id" *ngFor="let article of categories[0].articles" class="flex bg-beige h-[10vh] m-2 rounded-lg">
                 <img [src]="article.image" class="rounded-lg mr-2" alt="image">
                 <div>
                   <h6 class="text-sm my-2 font-light text-black h-[6vh]">{{article.titre}}</h6>
