@@ -11,7 +11,25 @@ router.get('/', async function (req, res, next) {
     const articles = await prisma.Article.findMany({
       include: { categories: true, utilisateur: true },
     });
-    // res.send(articles.splice(take,skip));
+    res.status(200).send(articles);
+  } catch (error) {
+    res.status(500).send({ error: error });
+  } finally {
+    // Cleanup and close connection
+    await prisma.$disconnect();
+
+  }
+});
+/* GET  Last 10 articles */
+router.get('/lasttenarticles', async function (req, res, next) {
+  const { take, skip } = req.query;
+  try {
+    const articles = await prisma.Article.findMany({
+      include: { categories: true, utilisateur: true }, orderBy: {
+        id: 'desc'
+      },
+      take: 10
+    });
     res.status(200).send(articles);
   } catch (error) {
     res.status(500).send({ error: error });
@@ -31,10 +49,19 @@ router.get('/:id', async (req, res, next) => {
       where: {
         id: parseInt(id),
       },
-      include: { categories: true, commentaires: true ,utilisateur: true }
+      include: { categories: true, commentaires: true, utilisateur: true }
     });
+    const articleWithCount = {
+      id: article.id,
+      titre: article.titre,
+      contenu: article.contenu,
+      image: article.image,
+      published: article.published,
+      commentaires: article.commentaires,
+      commentairesCount: article.commentaires.length,
+    }
     if (article) {
-      res.status(200).send(article);
+      res.status(200).send(articleWithCount);
     } else {
       res.status(404).send({ error: "Article not found" });
     }
@@ -48,7 +75,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 /* POST an article */
-router.post('/', async (req, res, next) => {
+router.post('/',authMiddleware , async (req, res, next) => {
   const { titre, contenu, image, published, utilisateurId, categorieIds } = req.body;
 
   try {
@@ -76,7 +103,7 @@ router.post('/', async (req, res, next) => {
 
 
 /* UPDATE an article */
-router.patch('/', async (req, res, next) => {
+router.patch('/',authMiddleware, async (req, res, next) => {
   const { id, titre, contenu, image } = req.body;
   try {
     const updatedArticle = await prisma.Article.update({
@@ -101,7 +128,7 @@ router.patch('/', async (req, res, next) => {
 
 
 /* DELETE an article */
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authMiddleware,async (req, res) => {
   const id = req.params.id;
   try {
     const article = await prisma.Article.findUnique({

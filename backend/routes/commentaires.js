@@ -1,4 +1,6 @@
 var express = require('express');
+const authMiddleware = require("../middleware/authMiddleware");
+
 var router = express.Router();
 const { PrismaClient } = require('@prisma/client');
 
@@ -31,7 +33,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 /* POST a commentaire */
-router.post('/', async (req, res, next) => {
+router.post('/', authMiddleware,async (req, res, next) => {
     const { email, contenu, articleId } = req.body;
     try {
         const newCommentaire = await prisma.Commentaire.create({
@@ -50,7 +52,7 @@ router.post('/', async (req, res, next) => {
 });
 
 /* UPDATE a commentaire */
-router.patch('/', async (req, res, next) => {
+router.patch('/',authMiddleware, async (req, res, next) => {
     const { id, email, contenu } = req.body;
     try {
         const updatedCommentaire = await prisma.commentaire.update({

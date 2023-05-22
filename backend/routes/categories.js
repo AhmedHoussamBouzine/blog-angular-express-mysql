@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const authMiddleware = require("../middleware/authMiddleware");
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
@@ -8,8 +9,17 @@ const prisma = new PrismaClient();
 router.get('/', async (req, res, next) => {
     const { take, skip } = req.query;
     try {
-        const categories = await prisma.Categorie.findMany();
-        res.status(200).send(categories);
+        const categories = await prisma.Categorie.findMany({
+            include: {
+                articles:true,
+            }
+        });
+        const categoriesWithCount = categories.map(categorie => ({
+            ...categorie,
+            articleCount: categorie.articles.length,
+        }));
+        categoriesWithCount.sort((a, b) => b.articleCount - a.articleCount);
+        res.status(200).send(categoriesWithCount);
     } catch (error) {
         res.status(500).send({ error: error });
     }
@@ -35,7 +45,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 /* POST a categorie */
-router.post('/', async (req, res, next) => {
+router.post('/',authMiddleware, async (req, res, next) => {
     const { nom, articleIds } = req.body;
     try {
         const newCategorie = await prisma.Categorie.create({
@@ -45,7 +55,7 @@ router.post('/', async (req, res, next) => {
                     connect: articleIds.map((id) => ({ id }))
                 },
             },
-            
+
             include: { articles: true }
         });
         res.status(200).send(newCategorie);
@@ -55,7 +65,7 @@ router.post('/', async (req, res, next) => {
 });
 
 /* UPDATE a categorie */
-router.patch('/', async (req, res, next) => {
+router.patch('/', authMiddleware,async (req, res, next) => {
     const { id, nom } = req.body;
     try {
         const updatedCategorie = await prisma.Categorie.update({
@@ -70,7 +80,7 @@ router.patch('/', async (req, res, next) => {
 });
 
 /* DELETE a categorie */
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', authMiddleware,async (req, res, next) => {
     const id = req.params.id;
     try {
         const categorie = await prisma.Categorie.findUnique({
@@ -87,7 +97,7 @@ router.delete('/:id', async (req, res, next) => {
             data: {
                 articles: {
                     set: [],
-                  },
+                },
             }
         });
         await prisma.categorie.delete({

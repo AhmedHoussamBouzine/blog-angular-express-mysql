@@ -12,7 +12,6 @@ GET http://localhost:3000/api/articles/2
 ###
 POST http://localhost:3000/api/articles
 Content-Type: application/json
-authorization :  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMiwiZW1haWwiOiJhbmEzNTQzQGdtYWlsLmNvbSIsImlhdCI6MTY4NDMzNDAwNX0.GqvVVbqC7ADg1h1t2SahN2NqspwgInjeoihMysSkky4
 
 {
   "titre": "Example Article",

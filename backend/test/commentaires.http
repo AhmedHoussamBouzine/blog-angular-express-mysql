@@ -1,7 +1,7 @@
 ###
 # GET All commentaire
 ###
-GET http://localhost:3000/api/commentaires?take=4&skip=2
+GET http://localhost:3000/api/commentaires?take=1&skip=1
 
 ###
 # GET an commentaire by id 
@@ -16,7 +16,7 @@ POST http://localhost:3000/api/commentaires
 Content-Type: application/json
 
 {
-   "email": "eererereddddr",
+  "email": "eererereddddr",
   "contenu": "rererer",
   "articleId": 2
 }

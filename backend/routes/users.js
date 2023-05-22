@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const bcrypt = require("bcrypt");
+const authMiddleware = require("../middleware/authMiddleware");
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
@@ -17,7 +18,6 @@ router.get('/', async (req, res, next) => {
       }
     }
     );
-    // res.send(utilisateurs.splice(take,skip));
     res.send(utilisateurs);
   } catch (error) {
     res.status(500).send({ error: error });
@@ -47,14 +47,14 @@ router.get('/:id', async (req, res, next) => {
 });
 
 /* POST a user */
-router.post('/', async (req, res, next) => {
+router.post('/', authMiddleware,async (req, res, next) => {
   const { nom, email, password, role } = req.body;
   try {
     const newUser = await prisma.Utilisateur.create({
       data: {
         nom,
         email,
-        password : await bcrypt.hash(password, 10)
+        password: await bcrypt.hash(password, 10)
       },
     });
     res.send({ status: true, message: 'User Created Successfully', user: newUser });
@@ -65,7 +65,7 @@ router.post('/', async (req, res, next) => {
 
 
 /* UPDATE a user */
-router.patch('/', async (req, res, next) => {
+router.patch('/', authMiddleware,async (req, res, next) => {
   const { id, nom, email, password, role } = req.body;
   try {
     const updateUser = await prisma.Utilisateur.update({
@@ -86,7 +86,7 @@ router.patch('/', async (req, res, next) => {
 });
 
 /* DELETE a user */
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', authMiddleware,async (req, res, next) => {
   const id = req.params.id;
   try {
     const user = await prisma.Utilisateur.findUnique({
