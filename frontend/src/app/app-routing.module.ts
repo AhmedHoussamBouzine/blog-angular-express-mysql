@@ -12,6 +12,7 @@ import { MyarticlesComponent } from './components/articles/myarticles/myarticles
 
 const routes: Routes = [
     {path:'',component:HomeComponent},
+    {path:'home',component:HomeComponent},
     {path:'explore',component:ExploreComponent,canActivate: [AuthGuard]},
     {path:'articles',component:ArticlesComponent,canActivate: [AuthGuard]},
     {path:'articles/:id',component:DetailsComponent,canActivate: [AuthGuard]},

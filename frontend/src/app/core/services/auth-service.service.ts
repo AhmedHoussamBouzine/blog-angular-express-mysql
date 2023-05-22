@@ -49,7 +49,6 @@ export class AuthServiceService {
     this.isloggedIn = false;
     localStorage.removeItem('jwt');
     localStorage.removeItem('user');
-    this.router.navigateByUrl('/');
-
+    this.router.navigateByUrl('/home');
   }
 }
