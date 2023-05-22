@@ -10,7 +10,10 @@ const prisma = new PrismaClient();
 router.get('/', async (req, res, next) => {
     const { take, skip } = req.query;
     try {
-        const commentaires = await prisma.Commentaire.findMany();
+        const commentaires = await prisma.Commentaire.findMany({
+            take: parseInt(take),
+            skip: parseInt(skip)
+        });
         res.status(200).send(commentaires);
     } catch (error) {
         res.status(500).send({ error: error });

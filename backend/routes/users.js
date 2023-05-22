@@ -14,8 +14,10 @@ router.get('/', async (req, res, next) => {
         id: true,
         nom: true,
         email: true,
-        role: true,
-      }
+        role: true
+      },
+      take: parseInt(take),
+      skip: parseInt(skip),
     }
     );
     res.send(utilisateurs);
@@ -48,7 +50,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 /* POST a user */
-router.post('/', authMiddleware,async (req, res, next) => {
+router.post('/', authMiddleware, async (req, res, next) => {
   const { nom, email, password, role } = req.body;
   try {
     const newUser = await prisma.Utilisateur.create({
@@ -66,7 +68,7 @@ router.post('/', authMiddleware,async (req, res, next) => {
 
 
 /* UPDATE a user */
-router.patch('/', authMiddleware,async (req, res, next) => {
+router.patch('/', authMiddleware, async (req, res, next) => {
   const { id, nom, email, password, role } = req.body;
   try {
     const updateUser = await prisma.Utilisateur.update({
@@ -87,7 +89,7 @@ router.patch('/', authMiddleware,async (req, res, next) => {
 });
 
 /* DELETE a user */
-router.delete('/:id', authMiddleware,async (req, res, next) => {
+router.delete('/:id', authMiddleware, async (req, res, next) => {
   const id = req.params.id;
   try {
     const user = await prisma.Utilisateur.findUnique({

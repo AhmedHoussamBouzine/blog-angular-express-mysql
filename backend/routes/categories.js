@@ -12,7 +12,9 @@ router.get('/', async (req, res, next) => {
         const categories = await prisma.Categorie.findMany({
             include: {
                 articles:true,
-            }
+            },
+            take: parseInt(take),
+            skip: parseInt(skip)
         });
         const categoriesWithCount = categories.map(categorie => ({
             ...categorie,

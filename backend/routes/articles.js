@@ -10,6 +10,8 @@ router.get('/', async function (req, res, next) {
   try {
     const articles = await prisma.Article.findMany({
       include: { categories: true, utilisateur: true },
+      take: parseInt(take),
+      skip: parseInt(skip)
     });
     res.status(200).send(articles);
   } catch (error) {
@@ -75,7 +77,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 /* POST an article */
-router.post('/',authMiddleware , async (req, res, next) => {
+router.post('/', authMiddleware, async (req, res, next) => {
   const { titre, contenu, image, published, utilisateurId, categorieIds } = req.body;
 
   try {
@@ -103,7 +105,7 @@ router.post('/',authMiddleware , async (req, res, next) => {
 
 
 /* UPDATE an article */
-router.patch('/',authMiddleware, async (req, res, next) => {
+router.patch('/', authMiddleware, async (req, res, next) => {
   const { id, titre, contenu, image } = req.body;
   try {
     const updatedArticle = await prisma.Article.update({
@@ -128,7 +130,7 @@ router.patch('/',authMiddleware, async (req, res, next) => {
 
 
 /* DELETE an article */
-router.delete('/:id', authMiddleware,async (req, res) => {
+router.delete('/:id', authMiddleware, async (req, res) => {
   const id = req.params.id;
   try {
     const article = await prisma.Article.findUnique({
