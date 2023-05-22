@@ -10,12 +10,12 @@ import { BASE_URL } from 'src/environments/environment';
 export class CommentaireService {
 
   subject =new Subject<Commentaire[]>();
-  constructor(private http: HttpClient) { }  
+  constructor(private http: HttpClient) { }
 
   create(commentaire :Commentaire): Observable<Commentaire> {
     return this.http.post<Commentaire>(`${BASE_URL}/commentaires`,commentaire);
   }
-   
+
 
   update(idCommentaire: number,commentaire:Commentaire): Observable<Commentaire> {
     return this.http.patch<Commentaire>(`${BASE_URL}/commentaires/${idCommentaire}`,commentaire);

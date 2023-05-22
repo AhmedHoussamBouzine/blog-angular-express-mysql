@@ -3,7 +3,7 @@
         <h1 class="max-w-2xl mx-8 mt-16 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">
             {{article.titre}}</h1>
         <h2 class="font-light my-4 mx-10 mb-10 ">{{article.createdAt | date :'short'}}</h2>
-        <div class="mb-5 font-light text-xl text-gray-500 text-justify">{{article.contenu}}</div>
+        <div [innerHTML]="article.contenu" class="mb-5 font-light text-xl text-gray-500 text-justify"></div>
 
     </div>
     <div class="w-[40%]">
@@ -12,7 +12,7 @@
         <section class="flexflex-col mx-11 justify-evenly mt-16 relative">
             <div class="flex m-2 flex-row justify-between items-center mr-12">
                 <h1 class="capitalize text-gray-800 font-bold tracking-wide">Comments :</h1> <span
-                    class="capitalize text-gray-800 font-bold tracking-wide">(3 Comments)</span>
+                    class="capitalize text-gray-800 font-bold tracking-wide">({{article.commentairesCount}} Comments)</span>
             </div>
             <div class="overflow-y-auto max-h-[40vh]">
                 <div *ngFor="let comment of article.commentaires" class="m-2 bg-beige rounded-md p-2  shadow-sm">
@@ -22,17 +22,17 @@
                     <div class="text-base text-gray-700 py-1 max-w-[350px]">{{comment.contenu}}</div>
 
                 </div>
-                
+
             </div>
             <div>
                 <div class="m-2 bg-beige rounded-md p-2 shadow-sm">
                     <form class="flex flex-col">
                         <label class="capitalize text-gray-800 font-bold tracking-wide my-4" for="comment">Add Comment
                         </label>
-                        <input
+                        <input [(ngModel)]="contenu"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                             type="text" name="comment" id="comment" placeholder="Typing.....">
-                        <button
+                        <button (click)="onAddCommentaire()"
                             class="self-end my-3 text-orange  text-white font-bold py-2 px-4 rounded-full"
                             type="submit"> Add </button>
                     </form>

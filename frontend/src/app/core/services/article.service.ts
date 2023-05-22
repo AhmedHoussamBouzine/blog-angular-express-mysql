@@ -33,6 +33,12 @@ export class articleService {
     })
     return this.subject.asObservable();
   }
+  getTen() {
+    this.http.get<Article[]>(`${BASE_URL}/articles/lasttenarticles`).subscribe(data => {
+      this.subject.next(data);
+    })
+    return this.subject.asObservable();
+  }
   getById(id: number) {
     return this.http.get(`${BASE_URL}/articles/${id}`);
   }

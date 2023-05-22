@@ -1,6 +1,6 @@
 export interface Commentaire {
     id?: number;
     email: string;
-    contenu: Text;
+    contenu: string;
     articleId: number;
 }

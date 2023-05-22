@@ -7,10 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthentificationComponent } from './components/authentification/authentification.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { UsersComponent } from './components/users/users.component';
-import { HeroSectionComponent } from './components/home/hero-section/hero-section.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { LatestArticlesComponent } from './components/home/latest-articles/latest-articles.component';
-import { TrendCategoriesComponent } from './components/home/trend-categories/trend-categories.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { ExploreComponent } from './components/explore/explore.component';
@@ -18,7 +15,7 @@ import { ItemTableComponent } from './components/users/item-table/item-table.com
 import { HeadTableComponent } from './components/users/head-table/head-table.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AddPopUpComponent } from './components/articles/add-pop-up/add-pop-up.component';
 import {AddPopUpUserComponent} from './components/users/add-pop-up/add-pop-up.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,6 +27,7 @@ import { AddCategoriePopUpComponent } from './components/users/add-categorie-pop
 import { UpdateUserPopUpComponent } from './components/users/update-user-pop-up/update-user-pop-up.component';
 import { DeleteUserPopUpComponent } from './components/users/delete-user-pop-up/delete-user-pop-up.component';
 import { DeleteCategoriePopUpComponent } from './components/users/delete-categorie-pop-up/delete-categorie-pop-up.component';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,10 +35,7 @@ import { DeleteCategoriePopUpComponent } from './components/users/delete-categor
     AuthentificationComponent,
     ArticlesComponent,
     UsersComponent,
-    HeroSectionComponent,
     FooterComponent,
-    LatestArticlesComponent,
-    TrendCategoriesComponent,
     HeaderComponent,
     NotfoundComponent,
     ExploreComponent,
@@ -68,7 +63,11 @@ import { DeleteCategoriePopUpComponent } from './components/users/delete-categor
     Ng2SearchPipeModule
 
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
