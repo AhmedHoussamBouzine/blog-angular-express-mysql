@@ -34,10 +34,11 @@ router.get('/:id', async (req, res, next) => {
         id: parseInt(id),
       },
       select: {
+        id: true,
         email: true,
         nom: true,
-        id: true,
         role: true,
+        articles: true,
       }
     });
     res.send(user);

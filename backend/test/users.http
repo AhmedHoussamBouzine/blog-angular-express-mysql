@@ -6,7 +6,7 @@ GET http://localhost:3000/api/utilisateurs?take=1&skip=0
 ###
 # GET a user by id 
 ###
-GET http://localhost:3000/api/users/1
+GET http://localhost:3000/api/utilisateurs/4
 
 ###
 # POST a user
