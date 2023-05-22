@@ -1,24 +1,24 @@
 <section id="explore" class="section bg-beige px-4 py-10 mb-14 relative overflow-hidden">
-    <div class="container mx-auto max-w-screen-xl">
+    <div class="container p-3 mx-auto max-w-screen-xl">
         <h1 class="text-3xl font-bold my-10">
             All Articles
         </h1>
         <div class="grid grid-cols-4 gap-4 overflow-y-auto max-h-[90vh]">
-            <div *ngFor="let article of articles"
+            <div [routerLink]="'/articles/'+article.id" *ngFor="let article of articles"
                 class="w-full max-w-sm  border border-gray-200 rounded-lg shadow  item-container">
-                <a href="#" class="img">
+                <a>
                     <img class="p-8 rounded-t-lg img" [src]="article.image" alt="image" />
                 </a>
                 <div class="px-5 py-5 bg-white ">
-                    <a href="#">
+                    <a>
                         <h5 class="text-2xl tracking-tight text-black h-[10vh]">{{article.titre}}</h5>
                     </a>
-                    <a href="#">
+                    <a>
                         <h5 class="text-end my-2 font-light tracking-tight  text-gray-500 ">
                             Posted by :
                             {{article.utilisateur.nom}}</h5>
                     </a>
-                    <a href="#">
+                    <a>
                         <h5 class="text-end font-light tracking-tight text-gray-500 ">
                             {{article.createdAt | date:'short' }} </h5>
                     </a>

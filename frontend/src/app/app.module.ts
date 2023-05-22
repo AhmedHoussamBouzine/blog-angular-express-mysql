@@ -28,6 +28,9 @@ import { UpdateUserPopUpComponent } from './components/users/update-user-pop-up/
 import { DeleteUserPopUpComponent } from './components/users/delete-user-pop-up/delete-user-pop-up.component';
 import { DeleteCategoriePopUpComponent } from './components/users/delete-categorie-pop-up/delete-categorie-pop-up.component';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { MyarticlesComponent } from './components/articles/myarticles/myarticles.component';
+import { UpdatePopUpComponent } from './components/articles/update-pop-up/update-pop-up.component';
+import { DeletePopUpComponent } from './components/articles/delete-pop-up/delete-pop-up.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +50,10 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     UpdateUserPopUpComponent,
     DeleteUserPopUpComponent,
     DeleteCategoriePopUpComponent,
-    AddPopUpUserComponent
+    AddPopUpUserComponent,
+    MyarticlesComponent,
+    UpdatePopUpComponent,
+    DeletePopUpComponent
   ],
   imports: [
     BrowserModule,

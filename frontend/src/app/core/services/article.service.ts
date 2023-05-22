@@ -19,8 +19,8 @@ export class articleService {
   }
 
 
-  update(idArticle: number, article: Article): Observable<Article> {
-    return this.http.patch<Article>(`${BASE_URL}/articles/${idArticle}`, article);
+  update(article: Article): Observable<Article> {
+    return this.http.patch<Article>(`${BASE_URL}/articles`, article);
   }
 
   delete(idArticle: number): Observable<Article> {

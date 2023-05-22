@@ -9,5 +9,6 @@ export class DataService {
   article:any;
   user:any;
   categorie:any;
+  articleCrud:any;
   constructor() { }
 }

@@ -29,21 +29,21 @@
       Latest Articles
     </h1>
     <div class="grid grid-cols-4 gap-4 overflow-y-auto max-h-[60vh]">
-      <div *ngFor="let article of articles"
+      <div  [routerLink]="'/articles/'+article.id" *ngFor="let article of articles"
         class="w-full max-w-sm  border border-gray-200 rounded-lg shadow  item-container">
-        <a href="#" class="img">
+        <a>
           <img class="p-8 rounded-t-lg img" [src]="article.image" alt="image" />
         </a>
         <div class="px-5 py-5 bg-beige ">
-          <a href="#">
+          <a>
             <h5 class="text-2xl tracking-tight text-black h-[10vh]">{{article.titre}}</h5>
           </a>
-          <a href="#">
+          <a>
             <h5 class="text-end my-2 font-light tracking-tight  text-gray-500 ">
               Posted by :
               {{article.utilisateur.nom}}</h5>
           </a>
-          <a href="#">
+          <a>
             <h5 class="text-end font-light tracking-tight text-gray-500 ">
               {{article.createdAt | date:'short' }} </h5>
           </a>
@@ -74,7 +74,7 @@
     <div class="flex ">
       <div class="container w-[75%]">
         <div class="grid grid-cols-3 gap-4">
-          <div class="w-full max-w-sm bg-white border h-[50vh] border-gray-200 rounded-lg shadow item-container">
+          <div  class="w-full max-w-sm bg-white border h-[50vh] border-gray-200 rounded-lg shadow item-container">
             <h1 class="text-2xl font-bold tracking-tight text-black py-5 border-b-2 mx-8 ">{{categories[0].nom}}</h1>
             <div class="overflow-y-auto max-h-[40vh] rounded-lg">
               <div [routerLink]="'/articles/'+article.id" *ngFor="let article of categories[0].articles" class="flex bg-beige h-[10vh] m-2 rounded-lg hover:bg-primary-100 ">
