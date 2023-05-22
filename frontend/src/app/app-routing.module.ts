@@ -9,6 +9,7 @@ import { ExploreComponent } from './components/explore/explore.component';
 import { DetailsComponent } from './components/articles/details/details.component';
 import { AuthGuard } from './core/guard/auth.guard';
 import { MyarticlesComponent } from './components/articles/myarticles/myarticles.component';
+import { RegisterComponent } from './components/authentification/register/register.component';
 
 const routes: Routes = [
     {path:'',component:HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
     {path:'manage',component:UsersComponent,canActivate: [AuthGuard]},
     {path:'myarticles',component:MyarticlesComponent,canActivate: [AuthGuard]},
     {path:'login',component:AuthentificationComponent},
+    {path:'register',component:RegisterComponent},
     {path:'**',component:NotfoundComponent,pathMatch:"prefix"}
   ];
 

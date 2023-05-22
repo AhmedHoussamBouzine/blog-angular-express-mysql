@@ -19,7 +19,9 @@ export class AuthServiceService {
   signIn(user:any){
     return this.http.post<any>(`${this.apiURL}/signin`,user);
   }
-
+  signUp(user:any){
+    return this.http.post<any>(`${this.apiURL}/signup`,user);
+  }
   saveToken(jwt:any,user:any){
     localStorage.setItem('jwt',jwt);
     localStorage.setItem('user',JSON.stringify(user));
@@ -49,6 +51,7 @@ export class AuthServiceService {
     this.isloggedIn = false;
     localStorage.removeItem('jwt');
     localStorage.removeItem('user');
-    this.router.navigateByUrl('/home');
+    window.location.href="/home";
+
   }
 }

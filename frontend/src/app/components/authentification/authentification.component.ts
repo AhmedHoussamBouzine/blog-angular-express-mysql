@@ -17,7 +17,7 @@ export class AuthentificationComponent implements OnInit {
   onLogin() {
     this.authService.signIn({ email: this.email, password: this.password }).subscribe(data => {
       this.authService.saveToken(data.token, data.user);
-      this.router.navigateByUrl('/');
+      window.location.href="/home";
     })
   }
 
