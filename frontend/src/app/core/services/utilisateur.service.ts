@@ -9,20 +9,21 @@ import { BASE_URL } from 'src/environments/environment';
 })
 export class UtilisateurService {
   subject =new Subject<Utilisateur[]>();
-  constructor(private http: HttpClient) { }  
+  constructor(private http: HttpClient) { }
 
   create(utilisateur :Utilisateur): Observable<Utilisateur> {
     return this.http.post<Utilisateur>(`${BASE_URL}/utilisateurs`,utilisateur);
   }
-   
 
-  update(idUtilisateur: number,utilisateur:Utilisateur): Observable<Utilisateur> {
-    return this.http.patch<Utilisateur>(`${BASE_URL}/utilisateurs/${idUtilisateur}`,utilisateur);
+
+  update(utilisateur:Utilisateur): Observable<Utilisateur> {
+    return this.http.patch<Utilisateur>(`${BASE_URL}/utilisateurs`,utilisateur);
   }
 
   delete(idUtilisateur: number): Observable<Utilisateur> {
     return this.http.delete<Utilisateur>(`${BASE_URL}/utilisateurs/${idUtilisateur}`)
   }
+
 
   getAll() {
     this.http.get<Utilisateur[]>(`${BASE_URL}/utilisateurs?take=1&skip=0`).subscribe(data =>

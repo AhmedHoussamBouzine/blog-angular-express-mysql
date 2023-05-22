@@ -5,8 +5,10 @@ export interface Article {
     contenu: Text;
     createdAt?: Date;
     updatedAt?: Date;
-    published: Boolean;
+    published?: Boolean;
     utilisateur?: any;
+    utilisateurId?: number;
     categories?: any;
     commentaires?: any;
+    categorieIds?: any;
 }

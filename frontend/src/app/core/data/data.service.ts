@@ -7,5 +7,7 @@ export class DataService {
   role:string = "ADMIN";
   articleId?: number;
   article:any;
+  user:any;
+  categorie:any;
   constructor() { }
 }

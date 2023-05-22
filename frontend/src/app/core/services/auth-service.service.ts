@@ -24,6 +24,7 @@ export class AuthServiceService {
     localStorage.setItem('jwt',jwt);
     localStorage.setItem('user',JSON.stringify(user));
     this.token = jwt;
+    this.loggedUser = JSON.stringify(user);
     this.isloggedIn = true;
   }
 
@@ -48,6 +49,7 @@ export class AuthServiceService {
     this.isloggedIn = false;
     localStorage.removeItem('jwt');
     localStorage.removeItem('user');
-    this.router.navigate(['/login']);
+    this.router.navigateByUrl('/');
+
   }
 }

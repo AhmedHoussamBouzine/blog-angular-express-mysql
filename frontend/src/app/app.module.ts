@@ -20,6 +20,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddPopUpComponent } from './components/articles/add-pop-up/add-pop-up.component';
+import {AddPopUpUserComponent} from './components/users/add-pop-up/add-pop-up.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
@@ -50,7 +51,8 @@ import { DeleteCategoriePopUpComponent } from './components/users/delete-categor
     AddCategoriePopUpComponent,
     UpdateUserPopUpComponent,
     DeleteUserPopUpComponent,
-    DeleteCategoriePopUpComponent
+    DeleteCategoriePopUpComponent,
+    AddPopUpUserComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,7 @@ import { DeleteCategoriePopUpComponent } from './components/users/delete-categor
     MatIconModule,
     MatDialogModule,
     Ng2SearchPipeModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

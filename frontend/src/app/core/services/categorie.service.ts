@@ -9,15 +9,15 @@ import { Categorie } from '../models/Categorie';
 })
 export class CategorieService {
   subject =new Subject<Categorie[]>();
-  constructor(private http: HttpClient) { }  
+  constructor(private http: HttpClient) { }
 
   create(categorie :Categorie): Observable<Categorie> {
     return this.http.post<Categorie>(`${BASE_URL}/categories`,categorie);
   }
-   
+
 
   update(idCategorie: number,categorie:Categorie): Observable<Categorie> {
-    return this.http.put<Categorie>(`${BASE_URL}/categories/${idCategorie}`,categorie);
+    return this.http.patch<Categorie>(`${BASE_URL}/categories/${idCategorie}`,categorie);
   }
 
   delete(idCategorie: number): Observable<Categorie> {

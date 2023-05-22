@@ -7,19 +7,20 @@ import { BASE_URL } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
+
 export class articleService {
 
-  subject =new Subject<Article[]>();
+  subject = new Subject<Article[]>();
 
-  constructor(private http: HttpClient) { }  
+  constructor(private http: HttpClient) { }
 
-  create(article :Article): Observable<Article> {
-    return this.http.post<Article>(`${BASE_URL}/articles`,article);
+  create(article: Article): Observable<Article> {
+    return this.http.post<Article>(`${BASE_URL}/articles`, article);
   }
-   
 
-  update(idArticle: number,article:Article): Observable<Article> {
-    return this.http.put<Article>(`${BASE_URL}/articles/${idArticle}`,article);
+
+  update(idArticle: number, article: Article): Observable<Article> {
+    return this.http.patch<Article>(`${BASE_URL}/articles/${idArticle}`, article);
   }
 
   delete(idArticle: number): Observable<Article> {
@@ -27,13 +28,12 @@ export class articleService {
   }
 
   getAll() {
-    this.http.get<Article[]>(`${BASE_URL}/articles?take=1&skip=0`).subscribe(data =>
-      {
-        this.subject.next(data);
-      })
+    this.http.get<Article[]>(`${BASE_URL}/articles?take=1&skip=0`).subscribe(data => {
+      this.subject.next(data);
+    })
     return this.subject.asObservable();
   }
-  getById(id:number){
-    return  this.http.get(`${BASE_URL}/articles/${id}`);
+  getById(id: number) {
+    return this.http.get(`${BASE_URL}/articles/${id}`);
   }
 }
