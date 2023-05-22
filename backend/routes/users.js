@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const bcrypt = require("bcrypt");
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
@@ -53,11 +54,10 @@ router.post('/', async (req, res, next) => {
       data: {
         nom,
         email,
-        password,
-        role,
+        password : await bcrypt.hash(password, 10)
       },
     });
-    res.send({ status: true, message: 'User Created Successfully', data: newUser.id });
+    res.send({ status: true, message: 'User Created Successfully', user: newUser });
   } catch (error) {
     res.status(500).send({ error: error })
   }
