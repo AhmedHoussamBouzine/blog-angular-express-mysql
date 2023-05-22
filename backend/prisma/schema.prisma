@@ -22,7 +22,7 @@ model Utilisateur {
 model Article {
   id          Int           @id @default(autoincrement())
   titre       String
-  contenu     String
+  contenu     String        @db.LongText
   image       String
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
@@ -42,7 +42,7 @@ model Categorie {
 model Commentaire {
   id         Int      @id @default(autoincrement())
   email      String
-  contenu    String
+  contenu    String   @db.LongText
   article    Article  @relation(fields: [articleId], references: [id])
   articleId  Int
 }

@@ -1,5 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
 const { faker } = require('@faker-js/faker');
+const bcrypt = require("bcrypt");
 
 const prisma = new PrismaClient();
 
@@ -15,7 +16,7 @@ async function seed() {
                 data: {
                     nom: faker.person.fullName(),
                     email: faker.internet.email(),
-                    password: faker.internet.password(),
+                    password: await bcrypt.hash(faker.internet.password(), 10),
                     role: 'AUTHOR',
                 },
             });
@@ -25,7 +26,7 @@ async function seed() {
             data: {
                 nom: faker.person.fullName(),
                 email: faker.internet.email(),
-                password: faker.internet.password(),
+                password: await bcrypt.hash(faker.internet.password(), 10),
                 role: 'ADMIN',
             },
         });
@@ -49,12 +50,12 @@ async function seed() {
         for (let i = 0; i < 100; i++) {
             const utilisateur = faker.helpers.arrayElement(utilisateurs);
 
-            const categoriesOnArticle = faker.helpers.arrayElements(categories, faker.number.int({ min: 1, max: 4 }));
+            const categoriesOnArticle = faker.helpers.arrayElements(categories, faker.number.int({ min: 1, max: 6 }));
 
             const article = await prisma.Article.create({
                 data: {
                     titre: faker.lorem.sentence(),
-                    contenu: faker.lorem.sentence(),
+                    contenu: faker.lorem.paragraphs(),
                     image: faker.image.url(),
                     published: true,
                     utilisateur: {
@@ -82,7 +83,7 @@ async function seed() {
             }
         }
 
-        console.log(true);
+        console.log("ok");
     } catch (error) {
         console.error( error);
     } finally {
