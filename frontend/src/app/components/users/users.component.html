@@ -16,10 +16,10 @@
                     Add Categorie
                 </button>
             </div>
-            <div class="bg-white p-4 shadow-lg rounded-lg">
+            <div class="bg-white p-4 border border-gray-200 shadow-lg rounded-lg">
                 <div class="mt-4">
                     <mat-chip-list class="flex flex-wrap gap-2">
-                        <mat-chip *ngFor="let categorie of categories" (click)="onDialogDeleteCategorie(categorie)" class="bg-beige w-[150px] flex justify-between"
+                        <mat-chip *ngFor="let categorie of categories" (click)="onDialogDeleteCategorie(categorie)" class="bg-beige-light w-[150px] flex justify-between"
                             (removed)="onDialogDeleteCategorie(categorie)">
                             <span> {{categorie.nom}} </span>
                             <button class="top-3" matChipRemove>
@@ -47,16 +47,16 @@
         </div>
 
         <div class="container">
-            <div class="bg-white p-4 shadow-lg rounded-lg">
+            <div class="bg-white p-4 border border-gray-200 tablet:overflow-x-auto min-w-[1000px] shadow-lg rounded-lg">
                 <div class="mt-4">
-                    <div class=" overflow-hidden border-b border-gray-200 sm:rounded-lg bg-white">
+                    <div class=" overflow-hidden  sm:rounded-lg min-w-[1000px] bg-white">
                         <div class="my-4 flex">
                            <input type="text" placeholder="Search..." [(ngModel)]="searchText"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  name="search">
                            <button class="text-white bg-orange hover:bg-orange focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5">Search</button>
                         </div>
-                        <table class="shadow table">
+                        <table class="shadow table border border-gray-200">
                             <app-head-table></app-head-table>
-                            <div class="container-tbaod">
+                            <div class="">
                                 <app-item-table *ngFor="let utilisateur of utilisateurs | filter:searchText ; let i = index"  [id]="i" [utilisateur]="utilisateur"></app-item-table>
                             </div>
                         </table>
@@ -67,3 +67,4 @@
         </div>
     </div>
 </section>
+<hr class="w-64 h-1 mx-auto my-4 bg-orange border-0 rounded md:my-10 ">

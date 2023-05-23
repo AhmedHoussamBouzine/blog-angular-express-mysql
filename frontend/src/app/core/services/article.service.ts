@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Article } from '../models/Article';
 import { HttpClient } from '@angular/common/http';
 import { Subject, Observable } from 'rxjs';
@@ -10,8 +10,8 @@ import { BASE_URL } from 'src/environments/environment';
 
 export class articleService {
 
-  subject = new Subject<Article[]>();
-
+  subject = new Subject<Article[]>() ;
+  articlesList: EventEmitter<any[]> = new EventEmitter<any[]>();
   constructor(private http: HttpClient) { }
 
   create(article: Article): Observable<Article> {

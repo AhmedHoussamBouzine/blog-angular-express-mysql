@@ -32,6 +32,8 @@ import { MyarticlesComponent } from './components/articles/myarticles/myarticles
 import { UpdatePopUpComponent } from './components/articles/update-pop-up/update-pop-up.component';
 import { DeletePopUpComponent } from './components/articles/delete-pop-up/delete-pop-up.component';
 import { RegisterComponent } from './components/authentification/register/register.component';
+import { ProfileComponent } from './components/users/profile/profile.component';
+import { UpdateProfilePopUpComponent } from './components/articles/update-user-pop-up/update-user-pop-up.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +57,9 @@ import { RegisterComponent } from './components/authentification/register/regist
     MyarticlesComponent,
     UpdatePopUpComponent,
     DeletePopUpComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent,
+    UpdateProfilePopUpComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { AddPopUpComponent } from './add-pop-up/add-pop-up.component';
@@ -15,15 +15,17 @@ import { Categorie } from 'src/app/core/models/Categorie';
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.css']
 })
-export class ArticlesComponent implements OnInit {
+export class ArticlesComponent implements OnInit  {
   public articles: Article[] = [];
 
   constructor(public dialog: MatDialog, private articleService: articleService,private data:DataService,private router:Router) { }
 
+
   ngOnInit(): void {
     this.getAllArticles();
   }
- 
+
+
   onDialogAddArticle(): void {
     const dialogRef = this.dialog.open(AddPopUpComponent);
 

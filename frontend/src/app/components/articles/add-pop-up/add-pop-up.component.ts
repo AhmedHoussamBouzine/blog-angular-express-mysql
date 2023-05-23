@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
@@ -19,6 +19,8 @@ export class AddPopUpComponent implements OnInit {
   contenu: any;
   titre: any;
   image: any;
+  articlesList: EventEmitter<any[]> = new EventEmitter<any[]>();
+
   selectedCategories: number[] = [];
 
   public categories: Categorie[] = []

@@ -1,44 +1,55 @@
 <div class="flex justify-between p-3 max-w-screen-xl mx-auto">
-    <div class="w-[60%]">
-        <h1 class="max-w-2xl mt-16 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">
-            {{article.titre}}</h1>
-        <h2 class="font-light my-4 mx-10 mb-10 ">{{article.createdAt | date :'short'}}</h2>
-        <div [innerHTML]="article.contenu" class="mb-5 font-light text-xl text-gray-500 text-justify"></div>
+  <div class="w-[60%]">
+    <h1 class="max-w-2xl mt-16 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">
+      {{article.titre}}</h1>
+    <h2 class="font-light my-4 mx-10 mb-10 ">{{article.createdAt | date :'short'}}</h2>
+    <div [innerHTML]="article.contenu" class="mb-5 font-light text-xl text-gray-500 text-justify"></div>
 
-    </div>
-    <div class="w-[40%]">
-        <img class="relative mx-auto my-8 p-4 w-[450px] bg-beige rounded-lg backdrop-filter backdrop-blur-lg shadow-sm"
-            [src]="article.image" alt="image">
-        <section class="flexflex-col mx-11 justify-evenly mt-16 relative">
-            <div class="flex m-2 flex-row justify-between items-center mr-12">
-                <h1 class="capitalize text-gray-800 font-bold tracking-wide">Comments :</h1> <span
-                    class="capitalize text-gray-800 font-bold tracking-wide">({{article.commentairesCount}} Comments)</span>
+  </div>
+  <div class="w-[40%]">
+    <img class="relative mx-auto my-8 p-4 w-[450px] bg-beige rounded-lg backdrop-filter backdrop-blur-lg shadow-sm"
+      [src]="article.image" alt="image">
+    <section class="flexflex-col mx-11 justify-evenly mt-16 relative">
+      <div class="flex m-2 flex-row justify-between items-center mr-12">
+        <h1 class="capitalize text-gray-800 font-bold tracking-wide">Comments :</h1> <span
+          class="capitalize text-gray-800 font-bold tracking-wide">({{article.commentairesCount}} Comments)</span>
+      </div>
+      <div class="overflow-y-auto max-h-[40vh]">
+        <div *ngFor="let comment of article.commentaires" class="m-2 bg-beige rounded-md p-2  shadow-sm">
+          <div class="flex flex-row justify-between relative pb-2"><span
+              class="capitalize text-gray-800 font-bold tracking-wide">{{comment.email}}</span><span
+              class="text-2xl absolute top-0 right-0 text-gray-500">"</span></div>
+          <div class="text-base text-gray-700 py-1 max-w-[350px]">{{comment.contenu}}</div>
+
+        </div>
+
+      </div>
+      <hr class="h-[2px] w-10/12 mx-auto bg-orange border-0 rounded md:my-10 ">
+      <div>
+        <div class="m-2 bg-beige rounded-md p-4 shadow-sm">
+          <div class="flex flex-col">
+            <label class="capitalize text-gray-800 font-bold tracking-wide my-2" for="comment">Add Comment
+            </label>
+            <div class="flex">
+              <input [(ngModel)]="contenu"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                type="text" name="comment" id="comment" placeholder="Typing.....">
+
+              <svg class="self-end my-3 text-orange w-[70px] py-2 px-4" (click)="onAddCommentaire()" viewBox="0 0 24 24"
+                fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#F2594B">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path d="M20 12L4 4L6 12M20 12L4 20L6 12M20 12H6" stroke="#F2594B" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+                </g>
+              </svg>
             </div>
-            <div class="overflow-y-auto max-h-[40vh]">
-                <div *ngFor="let comment of article.commentaires" class="m-2 bg-beige rounded-md p-2  shadow-sm">
-                    <div class="flex flex-row justify-between relative pb-2"><span
-                            class="capitalize text-gray-800 font-bold tracking-wide">{{comment.email}}</span><span
-                            class="text-2xl absolute top-0 right-0 text-gray-500">"</span></div>
-                    <div class="text-base text-gray-700 py-1 max-w-[350px]">{{comment.contenu}}</div>
+          </div>
 
-                </div>
-
-            </div>
-            <div>
-                <div class="m-2 bg-beige rounded-md p-2 shadow-sm">
-                    <form class="flex flex-col">
-                        <label class="capitalize text-gray-800 font-bold tracking-wide my-4" for="comment">Add Comment
-                        </label>
-                        <input [(ngModel)]="contenu"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                            type="text" name="comment" id="comment" placeholder="Typing.....">
-                        <button (click)="onAddCommentaire()"
-                            class="self-end my-3 text-orange  text-white font-bold py-2 px-4 rounded-full"
-                            type="submit"> Add </button>
-                    </form>
-
-                </div>
-            </div>
-        </section>
-    </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
+<hr class="w-64 h-1 mx-auto my-4 bg-orange border-0 rounded md:my-10 ">

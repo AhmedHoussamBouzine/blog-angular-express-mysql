@@ -9,6 +9,8 @@ import { AuthServiceService } from 'src/app/core/services/auth-service.service';
 import { UtilisateurService } from 'src/app/core/services/utilisateur.service';
 import { AddPopUpComponent } from '../add-pop-up/add-pop-up.component';
 import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
+import { UpdateUserPopUpComponent } from '../../users/update-user-pop-up/update-user-pop-up.component';
+import { UpdateProfilePopUpComponent } from '../update-user-pop-up/update-user-pop-up.component';
 
 @Component({
   selector: 'app-myarticles',
@@ -27,6 +29,13 @@ export class MyarticlesComponent implements OnInit {
 
   onDialogAddArticle(): void {
     const dialogRefAdd = this.dialog.open(AddPopUpComponent);
+
+    dialogRefAdd.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+  onDialogUpdateUser(): void {
+    const dialogRefAdd = this.dialog.open(UpdateProfilePopUpComponent);
 
     dialogRefAdd.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
