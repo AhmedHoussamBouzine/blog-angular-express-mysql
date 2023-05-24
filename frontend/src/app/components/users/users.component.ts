@@ -9,6 +9,8 @@ import { CategorieService } from 'src/app/core/services/categorie.service';
 import { Categorie } from 'src/app/core/models/Categorie';
 import { Utilisateur } from 'src/app/core/models/Utilisateur';
 import { DataService } from 'src/app/core/data/data.service';
+import { DeleteUserPopUpComponent } from './delete-user-pop-up/delete-user-pop-up.component';
+import { UpdateUserPopUpComponent } from './update-user-pop-up/update-user-pop-up.component';
 
 @Component({
   selector: 'app-users',
@@ -58,6 +60,21 @@ export class UsersComponent implements OnInit {
   onDialogDeleteCategorie(categorie: any): void {
     const dialogRef = this.dialog.open(DeleteCategoriePopUpComponent);
     this.dataService.categorie = categorie;
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  onDialogModifyUser(utilisateur:any): void {
+    const dialogRef = this.dialog.open(UpdateUserPopUpComponent);
+    this.dataService.user=utilisateur;
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+  onDialogDeleteUser(utilisateur:any): void {
+    const dialogRef = this.dialog.open(DeleteUserPopUpComponent);
+    this.dataService.user=utilisateur;
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });

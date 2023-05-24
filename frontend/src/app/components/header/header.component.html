@@ -25,9 +25,27 @@
           </svg>
         </button>
       </div>
-      <div *ngIf="islogged" class="inline-flex items-center lg:order-2">
-        <button routerLink="/myarticles"
-          class="text-orange font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+      <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+        <ul class="flex flex-col mt-4 ml-60 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+          <li>
+            <a routerLink="/"
+              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-orange lg:p-0 ">Home</a>
+          </li>
+          <li>
+            <a routerLink="/articles"
+              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-orange lg:p-0 ">Explore</a>
+          </li>
+          <li>
+            <a href="#trend"
+              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-orange lg:p-0 ">Trends</a>
+          </li>
+          <li *ngIf="role === 'ADMIN'">
+            <a routerLink="/manage"
+              class="block py-2 pr-4 pl-3 mr-20 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-orange lg:p-0 ">Manage</a>
+          </li>
+        </ul>
+        <button *ngIf="islogged" routerLink="/myarticles"
+          class="text-orange font-medium rounded-lg text-sm py-2 pr-4 pl-3 text-center inline-flex items-center"
           type="button">
           <svg class="w-[40px] mr-2" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
@@ -46,32 +64,25 @@
           </svg>
           <p> {{loggedUser.nom}}</p>
         </button>
-        <button (click)="logout()"
-          class="text-orange font-medium rounded-lg text-sm px-5 py-2.5 mx-4 text-center inline-flex items-center">
-          <svg class="w-[20px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21 12L13 12" stroke="#F2594B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M18 15L20.913 12.087V12.087C20.961 12.039 20.961 11.961 20.913 11.913V11.913L18 9" stroke="#F2594B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M16 5V4.5V4.5C16 3.67157 15.3284 3 14.5 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H14.5C15.3284 21 16 20.3284 16 19.5V19.5V19" stroke="#F2594B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+        <button *ngIf="islogged" (click)="logout()"
+          class="text-orange font-medium rounded-lg text-sm py-2 pr-4 pl-3 text-center inline-flex items-center">
+          <svg class="w-[20px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path d="M21 12L13 12" stroke="#F2594B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              </path>
+              <path d="M18 15L20.913 12.087V12.087C20.961 12.039 20.961 11.961 20.913 11.913V11.913L18 9"
+                stroke="#F2594B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path
+                d="M16 5V4.5V4.5C16 3.67157 15.3284 3 14.5 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H14.5C15.3284 21 16 20.3284 16 19.5V19.5V19"
+                stroke="#F2594B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+          </svg>
           <p>Log Out</p>
         </button>
       </div>
-      <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-        <ul class="flex flex-col mt-4 ml-60 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-          <li>
-            <a routerLink="/"
-              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-orange lg:p-0 ">Home</a>
-          </li>
-          <li>
-            <a routerLink="/articles"
-              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-orange lg:p-0 ">Explore</a>
-          </li>
-          <li>
-            <a href="#trend"
-              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-orange lg:p-0 ">Trends</a>
-          </li>
-          <li *ngIf="role === 'ADMIN'">
-            <a routerLink="/manage"
-              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-orange lg:p-0 ">Manage</a>
-          </li>
-        </ul>
-      </div>
     </div>
+
   </nav>
 </header>

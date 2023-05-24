@@ -1,20 +1,20 @@
 <tbody class="tbody min-w-[1000px]">
-    <tr>
-        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+    <tr class="bg-white border-b">
+        <td scope="row" class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
             <p>{{id+1}}</p>
         </td>
-        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
             <p>{{utilisateur.nom}}</p>
         </td>
-        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+        <td class="px-6 py-4">
             <p>{{utilisateur.email}}</p>
         </td>
-        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+        <td class="px-6 py-4">
             <div class="flex text-green-500">
                 <p>{{utilisateur.role}}</p>
             </div>
         </td>
-        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+        <td class="px-6 py-4">
             <div class="flex space-x-4">
                 <button  (click)="onDialogModifyUser()"
                     class="text-blue-500 hover:text-blue-600">

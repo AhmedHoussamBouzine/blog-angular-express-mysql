@@ -25,24 +25,48 @@ export class UpdatePopUpComponent implements OnInit {
   selectedcategorie!: number;
   configEditor: AngularEditorConfig = {
     editable: true,
-    spellcheck: true,
-    translate: 'no',
-    height: '200px',
-    width: '700px',
-    defaultParagraphSeparator: 'p',
-    defaultFontName: 'Arial',
-    sanitize: true,
-    fonts: [
-      { class: 'arial', name: 'Arial' },
-      { class: 'times-new-roman', name: 'Times New Roman' },
-      { class: 'calibri', name: 'Calibri' },
-      { class: 'comic-sans-ms', name: 'Comic Sans MS' }
+      spellcheck: true,
+      minHeight: '0',
+      maxHeight: 'auto',
+      width: '700px',
+      height: '150px',
+      minWidth: '0',
+      translate: 'yes',
+      enableToolbar: true,
+      showToolbar: true,
+      placeholder: 'Enter text here...',
+      defaultParagraphSeparator: '',
+      defaultFontName: '',
+      defaultFontSize: '',
+      fonts: [
+        {class: 'arial', name: 'Arial'},
+        {class: 'times-new-roman', name: 'Times New Roman'},
+        {class: 'calibri', name: 'Calibri'},
+        {class: 'comic-sans-ms', name: 'Comic Sans MS'}
+      ],
+      customClasses: [
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
     ],
+    uploadWithCredentials: false,
+    sanitize: true,
+    toolbarPosition: 'top',
     toolbarHiddenButtons: [
       ['bold', 'italic'],
       ['fontSize']
     ]
-  };
+};
   constructor(public dialogRef: MatDialogRef<UpdatePopUpComponent>, private sanitizer: DomSanitizer, private categorieService: CategorieService, private articleService: articleService,private authService:AuthServiceService,private dataService:DataService) { }
 
   aff() {

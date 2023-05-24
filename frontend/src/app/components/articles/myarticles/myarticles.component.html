@@ -27,8 +27,8 @@
         </button>
       </div>
     </div>
-    <div class="grid grid-cols-4 gap-4 phone:grid-cols-1  overflow-y-auto max-h-[90vh]">
-      <div [routerLink]="'/articles/'+article.id" *ngFor="let article of user.articles"
+    <div class="grid grid-cols-4 gap-4 phone:grid-cols-1 overflow-y-auto max-h-[90vh]">
+      <div *ngFor="let article of user.articles"
         class="w-full max-w-sm  border border-gray-200  rounded-lg shadow  item-container">
         <a class="img">
           <img class="p-8 rounded-t-lg img" [src]="article.image" alt="image" />
