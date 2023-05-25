@@ -9,9 +9,16 @@ git clone https://github.com/AhmedHoussamBouzine/projet-web.git
 
 ```
 Puis apres il faut installer node_modules pour les deux parties en executant les commandes suivant dans le **git bash** : 
+Pour le **backend** :
 ```
 cd backend/
 npm i
 ```
+Pour le **frontend** :
+```
+cd frontend/
+npm i
+```
+
 
 
