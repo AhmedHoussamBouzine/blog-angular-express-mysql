@@ -8,17 +8,37 @@ Pour tester le projet on le clone d'abord avec la commande:
 git clone https://github.com/AhmedHoussamBouzine/projet-web.git
 
 ```
-Puis apres il faut installer node_modules pour les deux parties en executant les commandes suivant dans le **git bash** : 
-Pour le **backend** :
+Pour la partie **backend** il faut installer `node_modules` et creer un fichier `.env` qui contient `DATABASE_URL` le lien pour la base de données et `TOKEY_KEY` en executant les commandes suivant dans le `git bash` : 
+
 ```
 cd backend/
-npm i
+npm i 
+touch .env
 ```
-Pour le **frontend** :
+puis remplir le fichier `.env` par le code suivant : 
+
 ```
-cd frontend/
-npm i
+DATABASE_URL="mysql://username:yourpassword@host:port/database_name"
+TOKEN_KEY = "the-secret-key"
 ```
+Apres il faut faire la migration de la base donnees avec la commande suivant: 
+```
+npx prisma migrate dev
+```
+
+et lancer `seeders` pour remplir la base de donnees pour le test:
+
+```
+node seeds/seed
+
+```
+
+
+
+
+
+
+
 
 
 
