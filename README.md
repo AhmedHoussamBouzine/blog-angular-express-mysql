@@ -8,7 +8,7 @@ Pour tester le projet on le clone d'abord avec la commande:
 git clone https://github.com/AhmedHoussamBouzine/projet-web.git
 
 ```
-##Partie Backend:
+## Partie Backend:
 
 Pour la partie **backend** il faut installer `node_modules` et creer un fichier `.env` qui contient `DATABASE_URL` le lien pour la base de données et `TOKEY_KEY` en executant les commandes suivant dans le `git bash` : 
 
@@ -42,7 +42,7 @@ npm start
 
 si le port `3000` est deja utiliser il faut le changer dans `/bin/www` par un autre port 
  
-##Partie Frontend:
+## Partie Frontend:
 
 dans un autre terminal `shell` on accede au frontend et on doit installer `node_modules` puis lancer le projet avec la commande suivant: 
 
