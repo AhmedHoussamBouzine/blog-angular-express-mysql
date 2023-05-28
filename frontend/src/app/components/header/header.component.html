@@ -6,9 +6,6 @@
         <span class="self-center text-3xl font-bold  font-dosis text-orange whitespace-nowrap">ger</span>
       </a>
       <div class="flex items-center">
-        <a *ngIf="!islogged" routerLink="/login"
-          class="text-white bg-orange focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2  focus:outline-none ">Log
-          in</a>
         <button data-collapse-toggle="mobile-menu-2" type="button"
           class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           aria-controls="mobile-menu-2" aria-expanded="false">
@@ -44,6 +41,9 @@
               class="block py-2 pr-4 pl-3 mr-20 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-orange lg:p-0 ">Manage</a>
           </li>
         </ul>
+        <a *ngIf="!islogged" routerLink="/login"
+        class="text-white bg-orange focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm ml-4 py-2 pr-4 pl-3 px-4 lg:px-5  lg:py-2.5 mr-2  focus:outline-none ">Log
+        in</a>
         <button *ngIf="islogged" routerLink="/myarticles"
           class="text-orange font-medium rounded-lg text-sm py-2 pr-4 pl-3 text-center inline-flex items-center"
           type="button">

@@ -14,7 +14,8 @@ export class UpdateUserPopUpComponent implements OnInit {
   public form = new FormGroup({
     nom: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
+    oldpassword: new FormControl('', [Validators.required]),
+    newpassword: new FormControl('', [Validators.required]),
     passwordConfirm: new FormControl('', [Validators.required]),
 
   });
@@ -34,7 +35,7 @@ export class UpdateUserPopUpComponent implements OnInit {
       id:this.user.id,
       nom: this.form.get('nom')?.value,
       email: this.form.get('email')?.value,
-      password: this.form.get('password')?.value,
+      password: this.form.get('newpassword')?.value,
       role: 'AUTHOR'
     }
     this.utilisateurService.update(utilisateur).subscribe(

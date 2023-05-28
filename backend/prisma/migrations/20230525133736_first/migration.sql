@@ -14,12 +14,12 @@ CREATE TABLE `Utilisateur` (
 CREATE TABLE `Article` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `titre` VARCHAR(191) NOT NULL,
-    `contenu` VARCHAR(191) NOT NULL,
+    `contenu` LONGTEXT NOT NULL,
     `image` VARCHAR(191) NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
     `published` BOOLEAN NOT NULL,
-    `auteurId` INTEGER NOT NULL,
+    `utilisateurId` INTEGER NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -36,7 +36,7 @@ CREATE TABLE `Categorie` (
 CREATE TABLE `Commentaire` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(191) NOT NULL,
-    `contenu` VARCHAR(191) NOT NULL,
+    `contenu` LONGTEXT NOT NULL,
     `articleId` INTEGER NOT NULL,
 
     PRIMARY KEY (`id`)
@@ -52,7 +52,7 @@ CREATE TABLE `_ArticleToCategorie` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `Article` ADD CONSTRAINT `Article_auteurId_fkey` FOREIGN KEY (`auteurId`) REFERENCES `Utilisateur`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Article` ADD CONSTRAINT `Article_utilisateurId_fkey` FOREIGN KEY (`utilisateurId`) REFERENCES `Utilisateur`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Commentaire` ADD CONSTRAINT `Commentaire_articleId_fkey` FOREIGN KEY (`articleId`) REFERENCES `Article`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
