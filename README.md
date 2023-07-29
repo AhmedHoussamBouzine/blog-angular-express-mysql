@@ -36,7 +36,7 @@ Then run the project with the following command:
 npm start
 ```
 
-If port `3000` is already in use, you need to change it in /bin/www to a different port
+If port `3000` is already in use, you need to change it in `/bin/www` to a different port
  
 ## Frontend Part:
 
