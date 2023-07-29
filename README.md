@@ -1,4 +1,5 @@
-# projet-web
+# blog-angular-express-mysql
+
 To test the project, first clone it with the following command:
 ```
 git clone https://github.com/AhmedHoussamBouzine/projet-web.git
