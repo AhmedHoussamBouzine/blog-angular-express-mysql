@@ -2,7 +2,7 @@
 
 To test the project, first clone it with the following command:
 ```
-git clone https://github.com/AhmedHoussamBouzine/projet-web.git
+git clone https://github.com/AhmedHoussamBouzine/blog-angular-express-mysql.git
 
 ```
 ## Backend Part:
