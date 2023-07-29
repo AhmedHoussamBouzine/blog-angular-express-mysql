@@ -43,6 +43,7 @@ If port `3000` is already in use, you need to change it in /bin/www to a differe
 In another shell terminal, access the frontend and install `node_modules` then run the project with the following command: 
 
 ```
+cd frontend/
 npm i
 ng serve
 ```
