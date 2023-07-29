@@ -1,56 +1,51 @@
 # projet-web
-### Ce projet est realisé dans le cadre du projet de fin de module du module Technologies Web pour la formation ingénieur a L'ENSET Mohammedia
-Ce projet est divisé en deux parties :
-- une partie **frontend** réalisée avec le framework **Angular**.
-- une autre **backend** réalisée avec **NodeJs** et **Express**.
-Pour tester le projet on le clone d'abord avec la commande: 
+To test the project, first clone it with the following command:
 ```
 git clone https://github.com/AhmedHoussamBouzine/projet-web.git
 
 ```
-## Partie Backend:
+## Backend Part:
 
-Pour la partie **backend** il faut installer `node_modules` et creer un fichier `.env` qui contient `DATABASE_URL` le lien pour la base de données et `TOKEY_KEY` en executant les commandes suivant dans le `git bash` : 
+For the backend part, install node_modules and create a .env file that contains DATABASE_URL the database link and TOKEY_KEY by executing the following commands in the git bash:
 
 ```
 cd backend/
 npm i 
 touch .env
 ```
-puis remplir le fichier `.env` par le code suivant : 
+Then fill the .env file with the following code:
 
 ```
 DATABASE_URL="mysql://username:yourpassword@host:port/database_name"
 TOKEN_KEY = "the-secret-key"
 ```
-Apres il faut faire la migration de la base donnees avec la commande suivant: 
+After that, make the database migration with the following command:
 ```
 npx prisma migrate dev
 ```
 
-et lancer `seeders` pour remplir la base de donnees pour le test:
+And run seeders to fill the database for testing:
 
 ```
 node seeds/seed
 
 ```
-apres lancer le projet avec la commade : 
-
+Then run the project with the following command:
 ```
 npm start
 ```
 
-si le port `3000` est deja utiliser il faut le changer dans `/bin/www` par un autre port 
+If port `3000` is already in use, you need to change it in /bin/www to a different port
  
-## Partie Frontend:
+## Frontend Part:
 
-dans un autre terminal `shell` on accede au frontend et on doit installer `node_modules` puis lancer le projet avec la commande suivant: 
+In another shell terminal, access the frontend and install node_modules then run the project with the following command: 
 
 ```
 npm i
 ng serve
 ```
-et naviguer vers `http://localhost:4200/` pour voir le projet
+And navigate to `http://localhost:4200/` to see the project.
 
 
 
